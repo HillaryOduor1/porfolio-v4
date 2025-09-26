@@ -1,4 +1,4 @@
-import Button from '../components/Button';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -11,8 +11,18 @@ const Home = () => {
             I create beautiful, functional, and responsive web applications with a focus on user experience and clean code.
           </p>
           <div className="flex justify-center space-x-4 animate-fade-in">
-            <Button as="a" href="#projects" variant="primary">View My Work</Button>
-            <Button as="a" href="#contact" variant="outline">Contact Me</Button>
+            <Link 
+              to="/projects" 
+              className="inline-flex items-center justify-center rounded-md font-medium h-10 py-2 px-4 bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+            >
+              View My Work
+            </Link>
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center justify-center rounded-md font-medium h-10 py-2 px-4 border border-gray-300 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800 transition-colors"
+            >
+              Contact Me
+            </Link>
           </div>
         </div>
       </div>

@@ -30,10 +30,10 @@ const About = () => {
   
   const education: Education[] = [
     {
-      degree: 'Bachelor of Science in Computer Science',
-      institution: 'University of Nairobi',
-      period: '2015 - 2019',
-      description: 'Graduated with First Class Honors. Specialized in software engineering and web technologies.'
+      degree: 'Bachelor of Business Information Technology',
+      institution: 'Mount Kenya University',
+      period: '2023 - 2026',
+      description: ''
     },
     {
       degree: 'AWS Certified Solutions Architect',
@@ -74,11 +74,10 @@ const About = () => {
               I specialize in creating modern, responsive web applications using React.js, Node.js, and other cutting-edge technologies.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              My journey in software development started at the University of Nairobi where I earned my Bachelor's degree in Computer Science. 
-              Since then, I've worked with various startups and established companies to build scalable web solutions.
+              My journey in software development started at the Mount Kenya University where I am persuing my Bachelor's degree in Business Information Technology. 
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
-              When I'm not coding, you can find me hiking, reading tech blogs, or contributing to open-source projects. 
+              When I'm not coding, you can find me reading tech blogs, or contributing to open-source projects. 
               I believe in continuous learning and staying updated with the latest industry trends.
             </p>
             
