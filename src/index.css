@@ -1,76 +1,20 @@
-/*:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}*/
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth theme transitions for all elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced transitions for specific elements */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Safe area handling */
 .safe-area {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -78,6 +22,7 @@ button:focus-visible {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Splash screen animations */
 @keyframes progress {
   0% { width: 0%; }
   100% { width: 100%; }
@@ -90,7 +35,7 @@ button:focus-visible {
   animation: progress 5s forwards;
 }
 
-/* Custom animations */
+/* Custom animations that work with your tailwind config */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -107,6 +52,7 @@ button:focus-visible {
   }
 }
 
+/* These classes will work with your tailwind config */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -115,30 +61,10 @@ button:focus-visible {
   animation: slideIn 0.5s ease-out;
 }
 
-/* ES5 Compatible CSS Variables Fallback */
-:root {
-  --primary-50: #eff6ff;
-  --primary-100: #dbeafe;
-  --primary-500: #3b82f6;
-  --primary-600: #2563eb;
-  --gray-300: #d1d5db;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-}
+/* Remove the manual theme CSS variables since Tailwind handles this */
+/* Tailwind's dark: variants will handle the theme switching */
 
-/* Manual dark mode class handling */
-.dark-mode {
-  background-color: var(--gray-900, #111827);
-  color: var(--gray-200, #e5e7eb);
-}
-
-/* Safe transitions */
-.transition-colors {
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
-
-/* Simple transform for ES5 */
+/* ES5 fallbacks for older browsers (optional) */
 .transform-translate-x-0 {
   transform: translateX(0);
 }
@@ -149,4 +75,11 @@ button:focus-visible {
 
 .transform-translate-x-neg-full {
   transform: translateX(-100%);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }
