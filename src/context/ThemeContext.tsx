@@ -60,7 +60,6 @@ import { createContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { THEME_KEY, THEMES, type Theme, type ThemeContextType } from './themes.types';
 
-// Note: We're not exporting the context directly anymore
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 interface ThemeProviderProps {
@@ -74,8 +73,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   useEffect(() => {
     const savedTheme = localStorage.getItem(THEME_KEY) as Theme;
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // Validate saved theme
+
     if (savedTheme === THEMES.LIGHT || savedTheme === THEMES.DARK) {
       setTheme(savedTheme);
     } else if (systemPrefersDark) {
@@ -83,34 +81,40 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     }
   }, []);
 
-  // Listen for system theme changes (when no theme is saved)
+  // Listen for system theme changes (only when no saved theme exists)
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     const handleSystemThemeChange = (e: MediaQueryListEvent) => {
-      // Only update if no theme is saved in localStorage
       if (!localStorage.getItem(THEME_KEY)) {
         setTheme(e.matches ? THEMES.DARK : THEMES.LIGHT);
       }
     };
-    
+
     mediaQuery.addEventListener('change', handleSystemThemeChange);
     return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
   }, []);
 
-  // Apply theme to DOM and save to localStorage
+  // Apply theme to <html> and <body> + save to localStorage
   useEffect(() => {
     localStorage.setItem(THEME_KEY, theme);
-    
+
+    const root = document.documentElement;
+    const body = document.body;
+
     if (theme === THEMES.DARK) {
-      document.documentElement.classList.add(THEMES.DARK);
+      root.classList.add(THEMES.DARK);
+      body.classList.add(THEMES.DARK);
     } else {
-      document.documentElement.classList.remove(THEMES.DARK);
+      root.classList.remove(THEMES.DARK);
+      body.classList.remove(THEMES.DARK);
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT);
+    setTheme(prevTheme =>
+      prevTheme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT
+    );
   };
 
   const setThemeDirectly = (newTheme: Theme) => {
@@ -124,5 +128,4 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   );
 };
 
-// Export the context for use in the separate hook file
 export { ThemeContext };
