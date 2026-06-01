@@ -10,22 +10,22 @@ interface Education {
   description: string;
 }
 
-interface Certification {
+/*interface Certification {
   name: string;
   issuer: string;
   date: string;
-}
+}*/
 
 const About = () => {
   const skills: Skill[] = [
     { name: 'JavaScript/React.js', level: 95 },
     { name: 'Node.js/Express', level: 90 },
     { name: 'HTML/CSS/Tailwind', level: 98 },
-    { name: 'Python/Django', level: 85 },
+    //{ name: 'Python/Django', level: 85 },
     { name: 'Database Management', level: 88 },
-    { name: 'AWS/Cloud Services', level: 82 },
-    { name: 'Docker/Containerization', level: 78 },
-    { name: 'CI/CD Pipelines', level: 80 }
+    //{ name: 'AWS/Cloud Services', level: 82 },
+    //{ name: 'Docker/Containerization', level: 78 },
+    //{ name: 'CI/CD Pipelines', level: 80 }
   ];
   
   const education: Education[] = [
@@ -36,15 +36,16 @@ const About = () => {
       description: ''
     },
     {
-      degree: 'AWS Certified Solutions Architect',
-      institution: 'Amazon Web Services',
-      period: '2020',
-      description: 'Professional certification in cloud architecture and solutions design.'
-    }
+      degree: 'Diploma In Business Information Technology',
+      institution: 'Mount Kenya University',
+      period: '2018 - 2022',
+      description: ''
+    },
+    
   ];
 
-  const certifications: Certification[] = [
-    {
+  /*const certifications: Certification[] = [
+    /*{
       name: 'React Developer Certification',
       issuer: 'Meta',
       date: '2022'
@@ -58,8 +59,8 @@ const About = () => {
       name: 'Google Cloud Associate Engineer',
       issuer: 'Google',
       date: '2021'
-    }
-  ];
+    },/
+  ];*/
 
   return (
     <section id="about" className="py-16 bg-gray-50 dark:bg-gray-800 safe-area">
@@ -70,7 +71,7 @@ const About = () => {
           <div>
             <h3 className="text-2xl font-semibold mb-6">Who I Am</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              I'm a passionate software engineer with over 5 years of experience in web development. 
+              I'm a passionate software developer with experience in web development. 
               I specialize in creating modern, responsive web applications using React.js, Node.js, and other cutting-edge technologies.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
@@ -127,7 +128,7 @@ const About = () => {
               </div>
             ))}
             
-            <h3 className="text-2xl font-semibold mt-10 mb-6">Certifications</h3>
+            {/* <h3 className="text-2xl font-semibold mt-10 mb-6">Certifications</h3>
             <div className="grid grid-cols-1 gap-3">
               {certifications.map((cert, index) => (
                 <div key={index} className="bg-gray-100 dark:bg-gray-700 p-3 rounded-lg">
@@ -135,7 +136,7 @@ const About = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-sm">{cert.issuer} | {cert.date}</p>
                 </div>
               ))}
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>

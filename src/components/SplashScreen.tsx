@@ -1,4 +1,15 @@
-import { useState, useEffect } from 'react'
+const SplashScreen = () => {
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center">
+      <div className="splash-spinner">
+        <div className="spinner w-12 h-12 border-4 border-current/30 border-t-current rounded-full animate-spin"></div>
+      </div>
+    </div>
+  )
+}
+
+export default SplashScreen
+/*import { useState, useEffect } from 'react'
 
 const SplashScreen = () => {
   const [show, setShow] = useState(true)
@@ -16,7 +27,7 @@ const SplashScreen = () => {
   return (
     <div className="splash-screen fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-primary-500 to-primary-700">
       <div className="splash-logo w-24 h-24 rounded-full bg-white flex items-center justify-center font-bold text-2xl mb-8 animate-pulse">
-        HO
+        H
       </div>
       <h2 className="text-white text-2xl font-bold mb-4">Hillary Oduor</h2>
       <div className="progress-bar w-48 h-1 bg-white/30 rounded-full overflow-hidden">
@@ -26,4 +37,4 @@ const SplashScreen = () => {
   )
 }
 
-export default SplashScreen
+export default SplashScreen*/
