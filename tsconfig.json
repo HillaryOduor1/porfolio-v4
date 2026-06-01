@@ -28,7 +28,7 @@
     "target": "ES5", // Ensure this is ES5
     "useDefineForClassFields": true,
     
-    "lib": ["ES5", "DOM", "DOM.Iterable"], // Include ES5
+    "lib": ["ES5", "DOM","ES2015.Promise", "DOM.Iterable"], // Include ES5
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",

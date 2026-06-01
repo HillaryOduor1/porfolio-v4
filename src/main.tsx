@@ -5,6 +5,9 @@ import { ThemeProvider } from './context/ThemeContext'
 import App from './App'
 import './index.css'
 
+// Import core-js polyfills for ES5 support
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 const rootElement = document.getElementById('root')
 
 if (!rootElement) {
