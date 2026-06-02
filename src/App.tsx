@@ -8,7 +8,7 @@ import SplashScreen from './components/SplashScreen'
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Projects = lazy(() => import('./pages/Projects'))
-const DocumentsRoute = lazy(() => import('./pages/Documents'))
+//const DocumentsRoute = lazy(() => import('./pages/Documents'))
 const Contact = lazy(() => import('./pages/Contact'))
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/documents" element={<DocumentsRoute />} />
+            {/*<Route path="/documents" element={<DocumentsRoute />} />*/}
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Suspense>
