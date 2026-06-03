@@ -36,28 +36,23 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['ie >= 11', 'chrome >= 49', 'firefox >= 45', 'safari >= 10', 'edge >= 12'],
+      targets: ['defaults', 'not IE 11'], // Remove IE 11 support
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
-      modernPolyfills: ['es.promise', 'es.array.iterator', 'es.object.assign', 'web.dom.iterable'],
+      modernPolyfills: true,
       renderLegacyChunks: true
     })
   ],
   build: {
-    target: 'es2015', // Use ES2015 instead of ES5 for better compatibility
+    target: 'es2015', // Don't use 'es5', let legacy plugin handle it
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'polyfills': ['core-js', 'regenerator-runtime']
+          'react-vendor': ['react', 'react-dom', 'react-router-dom']
         }
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'core-js']
-  },
-  esbuild: {
-    target: 'es2015',
-    legalComments: 'none'
+    include: ['react', 'react-dom', 'react-router-dom']
   }
 })
