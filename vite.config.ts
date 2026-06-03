@@ -1,7 +1,7 @@
-/*
+/* 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
+ 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -28,6 +28,7 @@ export default defineConfig({
     target: 'es5'
   }
 })*/
+/*
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
@@ -36,14 +37,15 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['defaults', 'not IE 11'], // Remove IE 11 support
+      targets: ['defaults', 'IE 11'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
       modernPolyfills: true,
       renderLegacyChunks: true
     })
   ],
   build: {
-    target: 'es2015', // Don't use 'es5', let legacy plugin handle it
+    target: 'es5', // Don't use 'es5', let legacy plugin handle it
+    cssTarget: 'es5',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -54,5 +56,21 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom']
+  }
+})*/
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import legacy from '@vitejs/plugin-legacy'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    legacy({
+      targets: ['defaults', 'ie 11'], // Support IE11 and other legacy browsers
+      modernPolyfills: true
+    })
+  ],
+  build: {
+    target: 'es5'
   }
 })
