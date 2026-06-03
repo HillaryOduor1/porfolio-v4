@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
     <link rel="shortcut icon" href="">
     <!-- Author Meta -->
@@ -12,24 +13,81 @@
     <meta name="description" content="I am a passionate Software Engineer">
     <!-- Meta Keyword -->
     <meta name="keywords" content="ICT, Communications,Software Engineering,Software development">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="" />
-    <meta property="og:title" content="Hillary Oduor-A Software Developer" />
+    <meta property="og:title" content="Hillary Oduor - A Software Developer" />
     <meta property="og:description" content="I craft Software Solutions to solve real-world problems" />
     <meta property="og:image" content="" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="" />
+    <meta property="twitter:title" content="Hillary Oduor - A Software Developer" />
+    <meta property="twitter:description" content="I craft Software Solutions to solve real-world problems" />
+    <meta property="twitter:image" content="" />
+
+    <!-- iOS Tags-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="">
+    <link rel="manifest" href="">
+
+    <!-- Legacy browser detection and fallback -->
+    <script>
+      // Detect very old browsers and show a message
+      if (typeof Promise === 'undefined' || typeof Object.assign === 'undefined') {
+        document.write('<div style="position:fixed;top:0;left:0;right:0;background:#f44336;color:white;padding:20px;text-align:center;z-index:9999;">');
+        document.write('Your browser is outdated. Please <a href="https://browsehappy.com/" style="color:white;text-decoration:underline;">update your browser</a> for the best experience.');
+        document.write('</div>');
+      }
+    </script>
+
+    <title>Hillary's Portfolio</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Nomodule script for legacy browsers -->
+    <script nomodule>
+      console.log('Legacy browser detected, loading polyfills...');
+    </script>
+  </body>
+</html>
+<!--<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <-- Favicon->
+    <link rel="shortcut icon" href="">
+    <-- Author Meta ->
+    <meta name="author" content="Hillary Oduor">
+    <-- Meta Description ->
+    <meta name="description" content="I am a passionate Software Engineer">
+    <-- Meta Keyword ->
+    <meta name="keywords" content="ICT, Communications,Software Engineering,Software development">
+    <-- meta character set ->
+    <meta charset="UTF-8">
+    
+    <-- Open Graph / Facebook ->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="Hillary Oduor-A Software Developer" />
+    <meta property="og:description" content="I craft Software Solutions to solve real-world problems" />
+    <meta property="og:image" content="" />
+
+    <-- Twitter ->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="" />
     <meta property="twitter:title" content="Hillary Oduor-A Software Developer" />
     <meta property="twitter:description" content="I craft Software Solutions tomsolve real-world problems" />
     <meta property="twitter:image" content="https://icta.go.ke/assets/og-image.jpg" />
 
-    <!-- IOS Tags-->
+    <-- IOS Tags->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link rel="apple-touch-icon" href="">
@@ -41,4 +99,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html>
+</html>-->
