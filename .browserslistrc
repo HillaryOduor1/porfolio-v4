@@ -1,0 +1,6 @@
+ie >= 11
+chrome >= 49
+firefox >= 45
+safari >= 10
+ios >= 9
+android >= 4.4
