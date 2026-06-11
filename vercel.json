@@ -3,11 +3,5 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install",
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://hillary-porfolio-v2.vercel.app/$1",
-      "statusCode": 301
-    }
-  ]
+  
 }
