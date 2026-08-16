@@ -1,16 +1,14 @@
 #!/bin/bash
 # vercel-build.sh
 
-# Install Git LFS if not already installed
-if ! command -v git-lfs &> /dev/null; then
-    echo "Installing Git LFS..."
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-    sudo apt-get install git-lfs
-fi
+echo "🔄 Running Vercel build script..."
 
-# Initialize and pull LFS files
-git lfs install
+# 1. Pull LFS files
+echo "📥 Pulling Git LFS files..."
 git lfs pull
 
-# Run the build
+# 2. Run the standard build
+echo "🏗️ Building the project..."
 npm run build
+
+echo "✅ Build completed."
