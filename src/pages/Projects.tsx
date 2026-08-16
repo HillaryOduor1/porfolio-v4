@@ -45,6 +45,7 @@ const Projects = () => {
       description: 'A secure password vault application created by OJ and Hillary for managing and storing passwords safely.',
       image: '/projects/PVault-screenshot.png',
       technologies: ['React', 'Express.js', 'MongoDB', 'TypeScript', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/hillaryoduor/pvault',
       liveUrl: 'https://pvault-v2.vercel.app/',
       category: 'desktop'
     },
@@ -57,7 +58,7 @@ const Projects = () => {
       downloadUrl: '/installer/ICTA_Access_Control_Setup_v1.2.0.exe',
       category: 'desktop',
       fileSize: '106 MB',
-      
+      version: 'v1.2.0'
     }
   ]
 
@@ -70,17 +71,14 @@ const Projects = () => {
     e.preventDefault()
     setDownloading(project.id)
     
-    // Simulate download start
-    setTimeout(() => {
-      // Create an anchor element and trigger download
-      const link = document.createElement('a')
-      link.href = project.downloadUrl!
-      link.download = `ICTA_Access_Control_Setup_${project.version}.exe`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      setDownloading(null)
-    }, 1000)
+    // Create an anchor element and trigger download
+    const link = document.createElement('a')
+    link.href = project.downloadUrl!
+    link.download = `ICTA_Access_Control_Setup_${project.version}.exe`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    setDownloading(null)
   }
 
   return (
@@ -166,7 +164,11 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-                
+                {project.version && project.downloadUrl && (
+                  <div className="absolute top-2 right-2 bg-primary-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                    {project.version}
+                  </div>
+                )}
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
