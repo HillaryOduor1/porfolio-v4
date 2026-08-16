@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/copy-installer.js",
-    "vercel-build": "bash vercel-build.sh",
     "lint": "eslint .",
     "preview": "vite preview"
   },

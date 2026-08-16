@@ -55,7 +55,7 @@ const Projects = () => {
       description: 'A comprehensive desktop application for managing access control in ICT Authority facilities. Features include employee and visitor management, access log tracking, real-time dashboard analytics, offline mode support with sync capabilities, and secure authentication with role-based access control.',
       image: '/projects/icta-acs-screenshot.png',
       technologies: ['Python', 'PySide6', 'SQLite', 'MongoDB', 'FastAPI', 'JWT', 'Keyring', 'PyInstaller'],
-      downloadUrl: '/installer/ICTA_Access_Control_Setup_v1.2.0.exe',
+      downloadUrl: 'https://github.com/HillaryOduor1/porfolio-v4/releases/download/v1.2.0/ICTA_Access_Control_Setup_v1.2.0.exe',
       category: 'desktop',
       fileSize: '106 MB',
       version: 'v1.2.0'
