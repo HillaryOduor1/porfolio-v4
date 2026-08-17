@@ -99,20 +99,3 @@ if (!String.prototype.includes) {
 
 // Export empty for module compatibility
 export {};
-
-
-/*// Import core-js for comprehensive ES5+ polyfills
-import 'core-js/stable';
-
-// Import regenerator-runtime for async/await
-import 'regenerator-runtime/runtime';
-
-// Simple browser detection for extremely old browsers
-if (typeof window !== 'undefined') {
-  // Create a global namespace for feature detection
-  (window as any).__LEGACY_BROWSER__ = 
-    typeof Promise === 'undefined' || 
-    typeof Object.assign === 'undefined' ||
-    typeof Symbol === 'undefined';
-}*/
-
