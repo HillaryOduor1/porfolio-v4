@@ -59,7 +59,7 @@ const About = () => {
               systems, databases, APIs, and responsive user experiences.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              I enjoy working across the stack—from designing intuitive interfaces with 
+              I enjoy working across the stack,from designing intuitive interfaces with 
               React and Tailwind CSS to developing backend services with Node.js and 
               Express and connecting applications to reliable data and third-party services.
             </p>
