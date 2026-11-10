@@ -46,37 +46,37 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-16 bg-gray-50 dark:bg-gray-800 safe-area">
+    <section id="about" className="py-16 bg-gray-50 dark:bg-ide-bg safe-area transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">About Me</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">About Me</h2>
         
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-2xl font-semibold mb-6">Who I Am</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-ide-text">Who I Am</h3>
+            <p className="text-gray-600 dark:text-ide-muted mb-6">
               I'm a software developer focused on building modern web applications and 
               practical digital solutions. My work spans frontend development, backend 
               systems, databases, APIs, and responsive user experiences.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              I enjoy working across the stack,from designing intuitive interfaces with 
+            <p className="text-gray-600 dark:text-ide-muted mb-6">
+              I enjoy working across the stack, from designing intuitive interfaces with 
               React and Tailwind CSS to developing backend services with Node.js and 
               Express and connecting applications to reliable data and third-party services.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-600 dark:text-ide-muted mb-6">
               What interests me most about software development is solving real problems. 
               I approach each project with a focus on usability, performance, maintainability, 
               and security rather than simply making something that works.
             </p>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-gray-600 dark:text-ide-muted mb-8">
               My journey in technology has been supported by my studies in Business 
               Information Technology at Mount Kenya University, where I have developed a 
               broader understanding of both technology and the business problems technology 
               is expected to solve.
             </p>
             
-            <h3 className="text-2xl font-semibold mb-4">How I Work</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-8">
+            <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-ide-text">How I Work</h3>
+            <p className="text-gray-600 dark:text-ide-muted mb-8">
               I believe good software is more than code. It should be understandable, 
               maintainable, accessible, responsive, and built around the people who will 
               actually use it.
@@ -87,7 +87,7 @@ const About = () => {
                 href="https://github.com/hillaryoduor1" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 transition-colors"
+                className="text-gray-600 dark:text-ide-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 aria-label="GitHub"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -98,7 +98,7 @@ const About = () => {
                 href="https://wa.me/254706261624" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 transition-colors"
+                className="text-gray-600 dark:text-ide-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 aria-label="WhatsApp"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -107,40 +107,29 @@ const About = () => {
               </a>
               <a 
                 href="mailto:hillaryoduor0@gmail.com" 
-                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 transition-colors"
+                className="text-gray-600 dark:text-ide-muted hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 aria-label="Email"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z" />
                 </svg>
               </a>
-              {/*<a 
-                href="https://linkedin.com/in/hillaryoduor" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-300 hover:text-primary-600 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-              </a>*/}
             </div>
           </div>
           
           <div>
-            <h3 className="text-2xl font-semibold mb-6">Core Skills</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-ide-text">Core Skills</h3>
             
             {skillCategories.map((category) => (
               <div key={category.category} className="mb-6">
-                <h4 className="font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <h4 className="font-medium text-gray-700 dark:text-ide-text mb-2">
                   {category.category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span 
                       key={skill} 
-                      className="px-3 py-1.5 bg-primary-100 text-primary-800 text-sm rounded-md dark:bg-primary-900 dark:text-primary-200"
+                      className="px-3 py-1.5 bg-primary-50 text-primary-700 text-sm font-medium rounded-md border border-primary-100 dark:bg-ide-tag dark:text-ide-text dark:border-ide-tagBorder"
                     >
                       {skill}
                     </span>
@@ -149,15 +138,15 @@ const About = () => {
               </div>
             ))}
             
-            <h3 className="text-2xl font-semibold mt-10 mb-6">Education</h3>
+            <h3 className="text-2xl font-semibold mt-10 mb-6 text-gray-900 dark:text-ide-text">Education</h3>
             {education.map((edu, index) => (
               <div key={index} className="mb-6">
-                <h4 className="font-semibold text-lg">{edu.degree}</h4>
-                <p className="text-gray-600 dark:text-gray-300">
+                <h4 className="font-semibold text-lg text-gray-900 dark:text-ide-text">{edu.degree}</h4>
+                <p className="text-gray-600 dark:text-ide-muted">
                   {edu.institution} | {edu.period}
                 </p>
                 {edu.description && (
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+                  <p className="text-gray-500 dark:text-ide-muted text-sm mt-1">
                     {edu.description}
                   </p>
                 )}
@@ -171,4 +160,3 @@ const About = () => {
 };
 
 export default About;
-

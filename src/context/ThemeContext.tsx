@@ -26,21 +26,43 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       }
     };
 
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+    // ES5 / Legacy Browser Fallback for MediaQueryList
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleSystemThemeChange);
+    } else if (mediaQuery.addListener) {
+      // Deprecated but necessary for older Safari/WebViews
+      mediaQuery.addListener(handleSystemThemeChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      } else if (mediaQuery.removeListener) {
+        mediaQuery.removeListener(handleSystemThemeChange);
+      }
+    };
   }, []);
 
   useEffect(() => {
     localStorage.setItem(THEME_KEY, theme);
     const root = document.documentElement;
     const body = document.body;
+    
+    // ES5 safe query selector (no optional chaining)
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
     if (theme === THEMES.DARK) {
       root.classList.add(THEMES.DARK);
       body.classList.add(THEMES.DARK);
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', '#1e1e1e');
+      }
     } else {
       root.classList.remove(THEMES.DARK);
       body.classList.remove(THEMES.DARK);
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', '#ffffff');
+      }
     }
   }, [theme]);
 
@@ -52,6 +74,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     setTheme(newTheme);
   };
 
+  // Using React.createElement for strict ES5 compatibility without relying on JSX transpilation
   return React.createElement(
     ThemeContext.Provider,
     { value: { theme, toggleTheme, setTheme: setThemeDirectly } },

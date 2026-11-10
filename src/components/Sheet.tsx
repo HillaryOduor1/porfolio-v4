@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 interface SheetProps {
   isOpen: boolean;
@@ -23,34 +23,30 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
 
   // Detect current theme for background color
   const getThemeBackgroundColor = (): string => {
-    // Check if document exists (SSR safety)
-    if (typeof document === 'undefined') {
-      return '#ffffff'; // Default light theme color
-    }
-    
-    // Check if dark class is present on html element
+    if (typeof document === 'undefined') return '#ffffff';
     const htmlElement = document.documentElement;
     const isDark = htmlElement.classList.contains('dark');
     
-    return isDark ? '#1f2937' : '#ffffff'; // gray-800 for dark, white for light
+    // Updated to use the new #252526 dark mode color
+    return isDark ? '#252526' : '#ffffff'; 
   };
 
-  // Simple show/hide without complex transitions for ES5 compatibility
+  // Return null properly unmounts it, fixing the aria-hidden focus bug
   if (!isOpen) {
     return null;
   }
 
-  // Basic positioning styles with theme-aware background
+  const themeBgColor = getThemeBackgroundColor();
+  const textColor = themeBgColor === '#252526' ? '#cccccc' : '#111827';
+
   const getSheetStyle = () => {
-    const themeBgColor = getThemeBackgroundColor();
-    const textColor = themeBgColor === '#1f2937' ? '#f9fafb' : '#111827'; // Light text for dark bg, dark text for light bg
-    
     const baseStyle = {
       position: 'fixed' as const,
-      zIndex: 50,
+      // INCREASED Z-INDEX: So it sits above the sticky nav (z-50)
+      zIndex: 70,
       backgroundColor: themeBgColor,
       color: textColor,
-      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)',
       transition: 'all 0.3s ease-in-out'
     };
 
@@ -62,7 +58,7 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
           top: 0,
           height: '100%',
           width: '320px',
-          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)'
+          transform: 'translateX(0)'
         };
       case 'right':
         return {
@@ -71,7 +67,7 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
           top: 0,
           height: '100%',
           width: '320px',
-          transform: isOpen ? 'translateX(0)' : 'translateX(100%)'
+          transform: 'translateX(0)'
         };
       case 'top':
         return {
@@ -80,7 +76,7 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
           left: 0,
           right: 0,
           height: 'auto',
-          transform: isOpen ? 'translateY(0)' : 'translateY(-100%)'
+          transform: 'translateY(0)'
         };
       case 'bottom':
         return {
@@ -89,7 +85,7 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
           left: 0,
           right: 0,
           height: 'auto',
-          transform: isOpen ? 'translateY(0)' : 'translateY(100%)'
+          transform: 'translateY(0)'
         };
       default:
         return baseStyle;
@@ -102,8 +98,9 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 40
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    // INCREASED Z-INDEX: So it covers the sticky nav
+    zIndex: 60 
   };
 
   return (
@@ -112,9 +109,7 @@ const Sheet = ({ isOpen, onClose, position = 'right', children }: SheetProps) =>
         style={backdropStyle}
         onClick={onClose}
         onKeyDown={(e) => {
-          if (e.key === 'Escape') {
-            onClose();
-          }
+          if (e.key === 'Escape') onClose();
         }}
         tabIndex={0}
         role="button"

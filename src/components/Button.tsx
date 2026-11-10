@@ -28,13 +28,13 @@ const Button = (props: ButtonProps) => {
     ...restProps 
   } = props;
   
-  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
+  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-white dark:ring-offset-ide-bg';
   
   const variantClasses = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700',
-    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700',
-    outline: 'border border-gray-300 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800',
-    ghost: 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800'
+    primary: 'bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600',
+    secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 dark:bg-ide-tag dark:text-ide-text dark:hover:bg-ide-border',
+    outline: 'border border-gray-300 bg-transparent hover:bg-gray-100 dark:border-ide-border dark:text-ide-text dark:hover:bg-ide-tag',
+    ghost: 'bg-transparent hover:bg-gray-100 dark:hover:bg-ide-tag dark:text-ide-text'
   };
   
   const sizeClasses = {

@@ -23,17 +23,27 @@ export default {
         }
       },
       colors: {
+        // Safer custom colors matching VS Code / modern dark themes
+        ide: {
+          bg: '#1e1e1e',        // Main background
+          surface: '#252526',   // Card/Sidebar background
+          border: '#3c3c3c',    // Subtle borders
+          text: '#cccccc',      // Main text
+          muted: '#8b8b8b',     // Secondary text
+          tag: '#2d2d2d',       // Tag background
+          tagBorder: '#404040', // Tag border
+        },
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
           200: '#bfdbfe',
           300: '#93c5fd',
           400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          500: '#007acc', // VS Code Blue
+          600: '#006bb3',
+          700: '#005c99',
+          800: '#004d80',
+          900: '#003d66',
         }
       }
     },

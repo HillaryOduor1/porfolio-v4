@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="App bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen">
+    <div className="App bg-white dark:bg-ide-bg text-gray-800 dark:text-ide-text transition-colors duration-300 min-h-screen font-sans">
       <Navigation />
       <main>
         <Routes>
@@ -22,4 +22,3 @@ function App() {
 }
 
 export default App;
-

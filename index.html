@@ -1,76 +1,191 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <!-- Author Meta -->
-    <meta name="author" content="Hillary Oduor">
-    
-    <!-- Meta Description -->
-    <meta name="description" content="I am a passionate Software Engineer specializing in building modern web applications and digital solutions.">
-    
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="Software Engineer,Web Development,React,Node.js,JavaScript,ICT,Full Stack Developer">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hillaryoduor.dev" />
-    <meta property="og:title" content="Hillary Oduor - Software Developer" />
-    <meta property="og:description" content="I craft Software Solutions to solve real-world problems" />
-    <meta property="og:image" content="/og-image.png" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://hillaryoduor.dev" />
-    <meta property="twitter:title" content="Hillary Oduor - Software Developer" />
-    <meta property="twitter:description" content="I craft Software Solutions to solve real-world problems" />
-    <meta property="twitter:image" content="/og-image.png" />
-
-    <!-- Remove deprecated apple-mobile-web-app-capable, use manifest instead -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#2563eb" />
-    <meta name="mobile-web-app-capable" content="yes" />
-
-    <!-- Legacy browser detection and fallback -->
+    <!-- CRITICAL: VIEWPORT HEIGHT SCRIPT (ES5) -->
     <script>
-      // Detect very old browsers and show a message
       (function() {
+        function setVh() {
+          document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+        }
+        setVh();
+        window.addEventListener('resize', setVh);
+        window.addEventListener('orientationchange', setVh);
+      })();
+    </script>
+
+    <!-- CRITICAL: THEME SCRIPT (ES5) -->
+    <script>
+      (function () {
+        var KEY = 'theme'; // Ensure this matches your ThemeContext KEY
+        var BG_DARK = '#1e1e1e'; // Updated to match VS Code/DeepSeek dark mode
+        var BG_LIGHT = '#ffffff';
+        var theme, resolved;
+        
         try {
-          // Check for ES6 features
-          var isES6Supported = true;
-          try {
-            eval('const test = () => {};');
-            eval('let {a} = {a:1};');
-          } catch(e) {
-            isES6Supported = false;
-          }
+          theme = localStorage.getItem(KEY);
+          theme = (theme === 'light' || theme === 'dark') ? theme : 'system';
+          resolved = theme === 'system'
+              ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+              : theme;
+              
+          document.documentElement.classList.add(resolved);
+          document.documentElement.setAttribute('data-theme', resolved);
+          document.documentElement.style.backgroundColor = resolved === 'dark' ? BG_DARK : BG_LIGHT;
+          document.documentElement.style.color = resolved === 'dark' ? '#cccccc' : '#1a1a1a';
+        } catch (_) {
+          resolved = 'light';
+          document.documentElement.classList.add('light');
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.style.backgroundColor = BG_LIGHT;
+          document.documentElement.style.color = '#1a1a1a';
+        }
+
+        function setManifest(theme) {
+          var manifestPath = theme === 'dark' 
+            ? '/dark-mode-favicon/site.webmanifest' 
+            : '/light-mode-favicon/site.webmanifest';
           
-          if (!isES6Supported) {
-            document.write('<div style="position:fixed;top:0;left:0;right:0;background:#f44336;color:white;padding:20px;text-align:center;z-index:9999;">');
-            document.write('Your browser is outdated. Please <a href="https://browsehappy.com/" style="color:white;text-decoration:underline;">update your browser</a> for the best experience.');
-            document.write('</div>');
+          var manifestLink = document.querySelector('link[rel="manifest"]');
+          if (manifestLink) {
+            manifestLink.href = manifestPath;
+          } else {
+            var link = document.createElement('link');
+            link.rel = 'manifest';
+            link.href = manifestPath;
+            document.head.appendChild(link);
           }
-        } catch(e) {
-          // If any error occurs, show the message
-          document.write('<div style="position:fixed;top:0;left:0;right:0;background:#f44336;color:white;padding:20px;text-align:center;z-index:9999;">');
-          document.write('Your browser is outdated. Please <a href="https://browsehappy.com/" style="color:white;text-decoration:underline;">update your browser</a> for the best experience.');
-          document.write('</div>');
+        }
+
+        setManifest(resolved);
+
+        document.addEventListener('themeChanged', function (e) {
+          var newTheme = e.detail && e.detail.theme ? e.detail.theme : 'light';
+          setManifest(newTheme);
+        });
+
+        if (window.matchMedia) {
+          var mq = window.matchMedia('(prefers-color-scheme: dark)');
+          mq.addListener(function (e) {
+            var stored = localStorage.getItem(KEY);
+            if (!stored || stored === 'system') {
+              var newTheme = e.matches ? 'dark' : 'light';
+              setManifest(newTheme);
+            }
+          });
         }
       })();
     </script>
 
+    <!-- ENCODING & VIEWPORT -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no" />
+
+    <!-- PRIMARY SEO -->
     <title>Hillary Oduor - Software Developer</title>
+    <meta name="description" content="I am a passionate Software Engineer specializing in building modern web applications and digital solutions. I craft Software Solutions to solve real-world problems." />
+    <meta name="keywords" content="Software Engineer, Web Development, React, Node.js, JavaScript, ICT, Full Stack Developer, Hillary Oduor" />
+    <meta name="author" content="Hillary Oduor" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/light-mode-favicon/site.webmanifest" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hillaryoduor.dev/" />
+
+    <!-- OPEN GRAPH (WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hillary Oduor" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://hillaryoduor.dev/" />
+    <meta property="og:title" content="Hillary Oduor - Software Developer" />
+    <meta property="og:description" content="I craft Software Solutions to solve real-world problems." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hillary Oduor - Software Developer" />
+
+    <!-- TWITTER / X CARDS -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://hillaryoduor.dev/" />
+    <meta name="twitter:title" content="Hillary Oduor - Software Developer" />
+    <meta name="twitter:description" content="I craft Software Solutions to solve real-world problems." />
+    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image:alt" content="Hillary Oduor - Software Developer" />
+
+    <!-- ANDROID / CHROME PWA -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- APPLE / iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Hillary Oduor" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- FAVICON SET -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+
+    <!-- PERFORMANCE — FONT LOADING -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- ACCESSIBILITY — SKIP LINK -->
+    <style>
+      .skip-to-content {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        padding: 0.5rem 1rem;
+        background: #007acc;
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 0 0 6px 6px;
+        text-decoration: none;
+        z-index: 9999;
+        transition: top 0.2s ease;
+      }
+      .skip-to-content:focus {
+        top: 0;
+      }
+      
+      /* Fallback colors to prevent flashing before Tailwind loads */
+      html {
+        background-color: #ffffff;
+        color: #1a1a1a;
+      }
+      html.dark {
+        background-color: #1e1e1e;
+        color: #cccccc;
+      }
+    </style>
+
+    <!-- STRUCTURED DATA — JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hillary Oduor",
+        "url": "https://hillaryoduor.dev/",
+        "jobTitle": "Software Developer",
+        "description": "I am a passionate Software Engineer specializing in building modern web applications and digital solutions.",
+        "sameAs": [
+          "https://github.com/hillaryoduor1",
+          "https://wa.me/254706261624"
+        ]
+      }
+    </script>
   </head>
+
   <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
